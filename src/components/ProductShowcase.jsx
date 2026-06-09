@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Check, ArrowRight, Zap } from 'lucide-react';
 import { products } from '../data/products';
 
-export default function ProductShowcase({ selectedProduct, onSelectProduct }) {
+export default function ProductShowcase({ selectedProduct, onSelectProduct, isAutoplay, onToggleAutoplay }) {
   return (
     <section id="showcase" className="relative w-full py-16 lg:py-24 px-6 lg:px-16 overflow-hidden">
       {/* Background glow effects */}
@@ -126,9 +126,24 @@ export default function ProductShowcase({ selectedProduct, onSelectProduct }) {
 
         {/* Product Selection Carousel Strip */}
         <div className="mt-16 lg:mt-24 border-t border-white/[0.03] pt-10">
-          <div className="flex flex-col gap-4 text-center items-center mb-6">
-            <span className="text-[10px] uppercase tracking-[0.3em] text-[#C5A059] font-bold">MEGUIAR'S PROFESSIONALS LINE</span>
-            <h2 className="text-xl lg:text-2xl font-semibold text-white">Select Product to Configure Checkout</h2>
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-8">
+            <div className="text-center md:text-left">
+              <span className="text-[10px] uppercase tracking-[0.3em] text-[#C5A059] font-bold block mb-1">MEGUIAR'S PROFESSIONALS LINE</span>
+              <h2 className="text-xl lg:text-2xl font-semibold text-white">Select Product to Configure Checkout</h2>
+            </div>
+            
+            {/* Dynamic Slideshow Loop Controller */}
+            <button
+              onClick={onToggleAutoplay}
+              className={`flex items-center gap-2.5 px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider border transition-all duration-300 ${
+                isAutoplay 
+                  ? 'bg-emerald-950/20 border-emerald-500/35 text-emerald-400 hover:bg-emerald-950/40' 
+                  : 'bg-[#1E1E22] border-white/[0.08] text-zinc-400 hover:text-white hover:bg-white/[0.03]'
+              }`}
+            >
+              <div className={`w-2 h-2 rounded-full ${isAutoplay ? 'bg-emerald-400 animate-pulse' : 'bg-zinc-500'}`} />
+              <span>{isAutoplay ? 'Autoplay Loop: Active' : 'Autoplay Loop: Paused'}</span>
+            </button>
           </div>
 
           {/* Horizontal Drag/Scroll Area */}
