@@ -1,0 +1,43 @@
+# Front-End Architecture & Design Rules
+
+You are rebuilding the product showcase landing page into a luxury automotive-inspired showcase. Follow these rules for all code, styling, and animations.
+
+## 1. Aesthetic Blueprint
+
+- **Theme**: Premium Dark Mode only.
+- **Color Palette**:
+  - **Primary Base**: Deep Charcoal (`#0B0B0C`, `#121214`)
+  - **Secondary Base**: Velvet Black (`#050505`) for high contrast sections.
+  - **Gold Accents**: Champagne Gold (`#D4AF37`, `#C5A059`), Dark Burnished Gold (`#AA7C11`).
+  - **Typography Tint**: Pure White (`#FFFFFF`) for headers, Light Grey (`#E4E4E7`) for subheaders, Muted Grey (`#9A9A9E`) for paragraph text.
+  - **Border Accents**: Gold Glass (`rgba(212, 175, 55, 0.12)`) and Dark Charcoal (`rgba(255, 255, 255, 0.05)`).
+- **Visual Styles**:
+  - Glassmorphic panels with gold borders.
+  - Smooth radial gradients simulating light reflections on polished car lacquer.
+  - Generous editorial padding and whitespace (`py-24`, `gap-16` on grids).
+
+## 2. Typography
+
+- **Headings**: Use `Outfit` (or a sleek geometric font) with wide letter tracking (`tracking-wider` or `tracking-widest`).
+- **Body**: Use `Inter` for clean, high-legibility readability.
+- **Brand Name**: Uppercase with spacious tracking (`tracking-[0.2em]`).
+
+## 3. Framer Motion Animation Standards
+
+- **Spring Dynamics**: Use spring physics for physical interactions (hovers, active clicks).
+  - Hover: `type: "spring", stiffness: 400, damping: 25`
+  - Drag: `type: "spring", stiffness: 200, damping: 30`
+- **Retail Buttons**:
+  - Hover state: Scale slightly (`scale: 1.02`), add soft gold drop-shadow/glow (`shadow-[0_0_20px_rgba(212,175,55,0.15)]`), shift arrow icons horizontally.
+  - Active tap state: Scale down (`scale: 0.98`).
+- **Scroll Reveals**:
+  - Fade-in + Slide-up for cards and sections. Use `viewport={{ once: true, margin: "-100px" }}`.
+
+## 4. Retail Grid (MikMak Integration)
+
+- **Layout**: Perfectly responsive.
+  - Mobile: 1 column
+  - Tablet: 2 columns
+  - Desktop: 3 columns
+- **Card Design**:
+  - Glassmorphic panels, dark charcoal base, rounded edges, clean retailer logo (inverted to white/monochrome or high-contrast gold where possible), price/stock indicators, and an animated checkout button.
